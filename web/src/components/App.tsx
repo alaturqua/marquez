@@ -5,6 +5,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { Box, Container, CssBaseline } from '@mui/material'
 import { Helmet, HelmetProvider } from 'react-helmet-async'
 import { LocalizationProvider } from '@mui/x-date-pickers'
+import { NotFound } from '../routes/not-found/NotFound'
 import { Provider } from 'react-redux'
 import { ReduxRouter, createRouterMiddleware } from '@lagunovsky/redux-react-router'
 import { Route, Routes } from 'react-router-dom'
@@ -14,6 +15,7 @@ import { composeWithDevTools } from '@redux-devtools/extension'
 import { createBrowserHistory } from 'history'
 import { theme } from '../helpers/theme'
 import ColumnLevel from '../routes/column-level/ColumnLevel'
+import Dashboard from '../routes/dashboard/Dashboard'
 import Datasets from '../routes/datasets/Datasets'
 import Events from '../routes/events/Events'
 import Header from './header/Header'
@@ -61,7 +63,8 @@ const App = (): ReactElement => {
                     <Header />
                   </Container>
                   <Routes>
-                    <Route path={'/'} element={<Jobs />} />
+                    <Route path={'/'} element={<Dashboard />} />
+                    <Route path={'/jobs'} element={<Jobs />} />
                     <Route path={'/datasets'} element={<Datasets />} />
                     <Route path={'/events'} element={<Events />} />
                     <Route
@@ -69,6 +72,7 @@ const App = (): ReactElement => {
                       element={<ColumnLevel />}
                     />
                     <Route path={'/lineage/:nodeType/:namespace/:name'} element={<TableLevel />} />
+                    <Route path='*' element={<NotFound />} />
                   </Routes>
                   <Toast />
                 </Box>

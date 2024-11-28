@@ -15,6 +15,7 @@ requirements = [
     "six",
     "pyrfc3339",
     "deprecation",
+    "pytz",
 ]
 
 extras_require = {
@@ -24,7 +25,7 @@ extras_require["dev"] = set(sum(extras_require.values(), []))
 
 setup(
     name="marquez-python",
-    version="0.50.0",
+    version="0.51.0",
     description="Marquez Python Client",
     long_description=readme,
     long_description_content_type="text/markdown",
